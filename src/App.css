@@ -1,0 +1,14 @@
+/* Layout geral: header, conteúdo e footer empilhados com flexbox */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.conteudo {
+  flex: 1; /* ocupa o espaço que sobrar, empurrando o footer para baixo */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}

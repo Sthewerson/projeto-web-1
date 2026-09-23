@@ -1,0 +1,28 @@
+/* Flexbox: botões lado a lado, quebrando linha quando não cabem */
+.categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.categoria {
+  padding: 8px 18px;
+  border: 2px solid var(--azul);
+  border-radius: 999px;
+  background-color: var(--branco);
+  color: var(--azul);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.categoria:hover {
+  background-color: #dde7f3;
+}
+
+.categoria.ativa {
+  background-color: var(--azul);
+  color: var(--branco);
+}

@@ -1,0 +1,40 @@
+/* Variáveis de cor e fonte usadas em todo o site */
+:root {
+  --azul: #1d4e89;      /* azul de azulejo */
+  --azul-escuro: #143761;
+  --ocre: #e3a72f;      /* ocre dos casarões */
+  --tinta: #1b2430;     /* cor do texto */
+  --cinza: #eef1f5;     /* fundo das seções */
+  --branco: #ffffff;
+
+  --fonte-titulo: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
+  --fonte-texto: 'Nunito Sans', 'Segoe UI', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--tinta);
+  background-color: var(--cinza);
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.15;
+}
+
+button, a {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ocre);
+  outline-offset: 2px;
+}

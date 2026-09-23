@@ -1,0 +1,46 @@
+.header {
+  background-color: var(--azul);
+  color: var(--branco);
+}
+
+/* Faixa decorativa que lembra azulejos, feita só com CSS */
+.header-faixa {
+  height: 28px;
+  background-color: var(--azul-escuro);
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--ocre) 4px, transparent 5px),
+    linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.25) 46%, rgba(255, 255, 255, 0.25) 54%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, rgba(255, 255, 255, 0.25) 46%, rgba(255, 255, 255, 0.25) 54%, transparent 55%);
+  background-size: 28px 28px;
+}
+
+.header-conteudo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px 44px;
+}
+
+/* Estilização de texto: fonte, tamanho, peso, espaçamento */
+.header-titulo {
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.header-subtitulo {
+  margin-top: 12px;
+  max-width: 45ch;
+  font-size: 1.15rem;
+  opacity: 0.9;
+}
+
+.header-horario {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background-color: var(--ocre);
+  color: var(--tinta);
+  font-weight: 700;
+  font-size: 0.95rem;
+}

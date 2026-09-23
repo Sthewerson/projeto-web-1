@@ -1,0 +1,11 @@
+/* Flexbox: cards em linha que quebram automaticamente */
+.lista-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lista-vazia {
+  padding: 32px 0;
+  color: #5a6472;
+}
