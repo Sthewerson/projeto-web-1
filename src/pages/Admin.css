@@ -1,0 +1,22 @@
+.admin-pagina { min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 32px 16px; }
+.admin-caixa { background: var(--branco); border-radius: 12px; padding: 24px; width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+.admin-larga { max-width: 860px; }
+.admin-caixa h1 { color: var(--azul); font-size: 1.5rem; display: flex; align-items: center; gap: 8px; }
+.admin-topo { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.admin-acoes { display: flex; gap: 8px; flex-wrap: wrap; }
+.admin-caixa label, .admin-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 700; font-size: .9rem; flex: 1; }
+.admin-caixa input:not([type=checkbox]), .admin-form select { padding: 10px; border: 1px solid #c5ccd6; border-radius: 8px; font: inherit; }
+.admin-form { display: flex; flex-direction: column; gap: 12px; background: var(--cinza); padding: 16px; border-radius: 10px; }
+.admin-linha { display: flex; gap: 12px; flex-wrap: wrap; }
+.admin-check { flex-direction: row !important; align-items: center; gap: 8px !important; }
+.admin-erro { color: #b3261e; font-weight: 700; }
+.admin-voltar { display: flex; align-items: center; gap: 6px; color: var(--azul); text-decoration: none; font-size: .9rem; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border: 1px solid var(--azul); background: var(--branco); color: var(--azul); border-radius: 8px; font-weight: 700; cursor: pointer; text-decoration: none; font-size: .95rem; }
+.btn-primario { background: var(--azul); color: var(--branco); }
+.btn-primario:hover { background: var(--azul-escuro); }
+.admin-tabela { width: 100%; border-collapse: collapse; }
+.admin-tabela th, .admin-tabela td { text-align: left; padding: 10px 8px; border-bottom: 1px solid #e2e6ec; }
+.admin-tag { margin-left: 8px; background: var(--ocre); border-radius: 6px; padding: 2px 6px; font-size: .75rem; }
+.btn-icone { background: none; border: none; cursor: pointer; font-size: 1.1rem; padding: 6px; color: var(--azul); }
+.btn-icone.perigo { color: #b3261e; }
+.admin-previa { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; }

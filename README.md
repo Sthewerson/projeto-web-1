@@ -18,50 +18,65 @@ Muitos estabelecimentos pequenos usam cardápio de papel ou mandam fotos pelo Wh
 
 ## Tecnologias
 
-- [React](https://react.dev/) 18
-- [Vite](https://vitejs.dev/)
-- HTML e CSS (Flexbox)
+- Front-end: [React](https://react.dev/) 18, [Vite](https://vitejs.dev/), React Router, React Icons
+- Back-end: [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/)
+- Banco de dados: [MySQL](https://www.mysql.com/) (driver `mysql2`)
+- Autenticação do dono: JWT + senha com hash (`bcryptjs`)
 
 ## Como executar
 
-Pré-requisito: [Node.js](https://nodejs.org/) 18 ou superior.
+Pré-requisitos: Node.js 18+ e MySQL em execução.
 
 ```bash
 # 1. Clonar o repositório
 git clone https://github.com/SEU-USUARIO/cardapio-digital.git
 cd cardapio-digital
 
-# 2. Instalar as dependências
+# 2. Back-end: instalar, configurar e criar o banco
+cd backend
 npm install
+cp .env.example .env     # edite com a senha do seu MySQL e o login do admin
+npm run setup            # cria banco, tabelas, produtos iniciais e o usuário admin
+npm run dev              # API em http://localhost:3001
 
-# 3. Rodar em modo de desenvolvimento
-npm run dev
+# 3. Front-end (em outro terminal, na raiz do projeto)
+npm install
+npm run dev              # http://localhost:5173
 ```
 
-Depois acesse o endereço que aparecer no terminal (normalmente http://localhost:5173).
+O Vite redireciona as chamadas `/api` para a API na porta 3001.
+O painel do dono fica em `/admin` (use o `ADMIN_USUARIO` e `ADMIN_SENHA` do `.env`).
 
-Para gerar a versão de produção:
+## API
 
-```bash
-npm run build
-```
+| Método | Rota | Acesso | Descrição |
+|---|---|---|---|
+| GET | `/api/produtos` | público | Lista produtos (`?categoria=Lanches` filtra) |
+| GET | `/api/categorias` | público | Lista categorias |
+| POST | `/api/login` | público | Recebe `{usuario, senha}` e devolve `{token}` |
+| POST | `/api/produtos` | admin | Cadastra produto |
+| PUT | `/api/produtos/:id` | admin | Edita produto |
+| DELETE | `/api/produtos/:id` | admin | Exclui produto |
+
+Rotas de admin exigem o header `Authorization: Bearer <token>`.
 
 ## Estrutura do projeto
 
 ```
 cardapio-digital/
-├── public/imagens/        # fotos dos produtos
-├── src/
-│   ├── components/
-│   │   ├── Header.jsx         # topo com nome e horário
-│   │   ├── Categorias.jsx     # botões de filtro
-│   │   ├── ListaProdutos.jsx  # grade de produtos
-│   │   ├── CardProduto.jsx    # card de um produto (reutilizável)
-│   │   └── Footer.jsx         # endereço e contato
-│   ├── data/produtos.js   # dados do cardápio
-│   ├── App.jsx            # componente principal e estado do filtro
-│   └── index.css          # cores, fontes e estilos globais
-└── index.html
+├── backend/
+│   ├── sql/schema.sql       # tabelas: categorias, produtos, usuarios
+│   ├── scripts/setup.js     # cria o banco e os dados iniciais
+│   └── src/
+│       ├── server.js        # Express
+│       ├── db.js            # pool de conexões MySQL
+│       ├── middleware/auth.js
+│       └── routes/          # produtos.js, auth.js
+├── public/imagens/          # fotos dos produtos
+└── src/                     # front-end React
+    ├── pages/               # Home, Login, Admin
+    ├── components/          # Header, Categorias, ListaProdutos, CardProduto, FormProduto, Footer
+    └── services/api.js      # chamadas à API
 ```
 
 ## Requisitos da disciplina atendidos
@@ -75,8 +90,10 @@ cardapio-digital/
 | Aplicação React com HTML e CSS | Todo o projeto (Vite + React) |
 | Componentes | `CardProduto` recebe dados por props e é reutilizado com `.map()` |
 
-## Próximos passos (fase 2)
-
-- Back-end com API REST para cadastrar, editar e excluir produtos
-- Painel do dono com login
-- Os dados de `src/data/produtos.js` passarão a vir da API (`GET /produtos`)
+| Requisito (fase 2) | Onde está |
+|---|---|
+| Rotas para diferentes páginas | `App.jsx` (`/`, `/admin/login`, `/admin`) |
+| Biblioteca de ícones | `react-icons` em `Header`, `Login`, `Admin` |
+| `onChange` e `onClick` | `Login.jsx`, `FormProduto.jsx`, `Admin.jsx`, `Categorias.jsx` |
+| `useState` e renderização condicional | `Home.jsx` (carregando/erro), `Admin.jsx` (formulário aberto/fechado, redirecionamento sem login) |
+| Conexão com banco de dados | `backend/src/db.js` + `routes/produtos.js` (MySQL) |

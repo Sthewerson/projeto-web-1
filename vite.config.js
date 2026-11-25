@@ -3,5 +3,11 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // permite publicar no GitHub Pages sem ajustes
+  server: {
+    // em desenvolvimento, chamadas para /api vão para o back-end
+    proxy: {
+      '/api': 'http://localhost:3001',
+      '/uploads': 'http://localhost:3001',
+    },
+  },
 })

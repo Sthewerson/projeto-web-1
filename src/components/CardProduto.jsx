@@ -1,4 +1,4 @@
-import { WHATSAPP } from '../data/produtos'
+import { WHATSAPP } from '../config'
 import './CardProduto.css'
 
 // Formata o número como moeda brasileira: 22 -> "R$ 22,00"
@@ -13,7 +13,7 @@ function CardProduto({ produto }) {
   return (
     <article className="card">
       <div className="card-imagem-area">
-        <img className="card-imagem" src={produto.imagem} alt={produto.nome} />
+        <img className="card-imagem" src={`/${produto.imagem}`} alt={produto.nome} />
         {produto.destaque && <span className="card-selo">Mais pedido</span>}
       </div>
 
